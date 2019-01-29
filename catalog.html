@@ -30,11 +30,11 @@
 
 
 
-    <title>Document</title>
+    <title>Catalog</title>
   </head>
   <body onload="ProductsInfo()">
 
-    <!-- Shopping cart -->
+    <!-- Modal for the selection of the items -->
     <div class="modal fade" id="ShoppingCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -61,13 +61,13 @@
 
                 <br>
                 <br> 
-                <label id="P_total" for="Total"  > </label>
-
+                <label id="P_total" for="Total"  >Total amount for this Product:   $ </label>
+                <label id="P_total_amount" for="Total"  ></label>
 
             </div>
             <div class="modal-footer">
-                    <input type="submit"  value="Add To Cart" onclick="addStudent()" class="btn btn-outline-info" style="margin-left: 60px;" data-dismiss="modal">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit"  value="Add To Cart" onclick="UpdateCart()" class="btn btn-outline-info" style="margin-left: 60px;" data-dismiss="modal">
+                <button type="button" onclick="CleanFields()" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 
             </div>
             </div>
@@ -75,8 +75,7 @@
         </div>
 
 
-
-          <!-- JumboTron -->
+         <!-- JumboTron -->
 
     <div class="jumbotron jumbotron-fluid" style="margin-bottom: 10px;">
       <h1 class="display-4">Products</h1>
@@ -86,7 +85,12 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="#">Products</a></li>
         </ul>
+
+        <button class="btn btn-primary"  onclick="ShoppingCartInfo()" style="margin-left:1000px; border-color:gray; background-color: grey"><a href="cart.html"> <img src="cart.png" alt=""></a></button>
       </div>
+
+      
+
     </div>
 
     <table
@@ -104,7 +108,7 @@
       <tbody id="body"></tbody>
     </table>
 
-<button onclick="test()">test</button>
+
 
   </body>
 </html>

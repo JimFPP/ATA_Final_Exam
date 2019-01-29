@@ -1,38 +1,25 @@
-// function Add(){
-
-//     var item = document.createElement('li')
-//     item.id = 'i'
-//     var ref = document.createElement('a')
-//     ref.href = '#'
-//     ref.innerText = 'j'
-
-//     item.append(ref)
-
-//     breadcrumb.append(item)
-// }
-
-// function Rem(){
-
-// document.getElementById('i').remove()
-// }
-
 var products = [
-  { name: "bed", price: 225.0 },
-  { name: "bench", price: 29.99 },
-  { name: "chair", price: 9.99 },
-  { name: "couch", price: 50.0 },
-  { name: "pillow", price: 5.0 }
+  { name: "Bed", price: 225.0 },
+  { name: "Bench", price: 29.99 },
+  { name: "Chair", price: 9.99 },
+  { name: "Couch", price: 50.0 },
+  { name: "Pillow", price: 5.0 }
 ];
+
 
 function* Datos() {
   yield* products;
 }
+
+
+var sCart = [];
 
 let d = Datos();
 var record = d.next();
 
 var idCounter = 1
 var p_quantity = 0
+var Final_amount = 0
 
 
 function ProductsInfo() {
@@ -69,8 +56,6 @@ function ProductsInfo() {
 }
 
 function press(evt){
-
- 
 
     var CurID = evt.target.id
 
@@ -112,7 +97,7 @@ function test(){
 
 }
 
-function add(p_quantity){
+function add(){
 
     var quantity = parseInt(Amount.placeholder)
 
@@ -120,10 +105,12 @@ function add(p_quantity){
     
     Amount.placeholder = quantity
 
-    P_total.innerText = "Total amount for this Product:   $"+(parseInt(Amount.placeholder) * parseInt(Price.innerText))
-      
+    var Total = parseInt(Amount.placeholder) * parseInt(Price.innerText)
+    
+    P_total_amount.innerText = Total
 }
-function remove(p_quantity){ 
+
+function remove(){ 
 
     var quantity = parseInt(Amount.placeholder)
 
@@ -135,6 +122,73 @@ function remove(p_quantity){
 
     Amount.placeholder = quantity
 
-    P_total.innerText = "Total amount for this Product:   $"+(parseInt(Amount.placeholder) * parseInt(Price.innerText))
+    var Total = parseInt(Amount.placeholder) * parseInt(Price.innerText)
+
+    P_total_amount.innerText = Total
       
 }
+
+function CleanFields(){
+    Amount.placeholder = 0
+    P_total_amount.innerText = 0
+}
+
+function UpdateCart(){
+
+    // if(parseInt(Amount.placeholder) < 0){
+    Final_amount = Final_amount + parseInt(P_total.innerText)
+    console.log(Final_amount)
+
+
+
+    sCart.push({name: exampleModalLabel.innerText,price: Price.innerText, amount: Amount.placeholder, total: P_total_amount.innerText})
+
+   CleanFields()
+
+   console.log(sCart)
+
+}
+
+
+function ShoppingCartInfo(){
+   
+
+    var l = sCart;
+
+    console.log(sCart)
+
+    for (i=0;i <= (sCart.length-1);i++) {
+        console.log(i)
+    //   if (!CartRecord.done) {
+        // scores.push(record.value.score);
+  
+        var tbl = document.getElementById("body"); // table reference
+        row = tbl.insertRow(-1); // append table row
+  
+        // console.log(CartRecord.value.score);
+  
+        T_name = row.insertCell();
+        T_price = row.insertCell();
+        T_amount = row.insertCell();
+        T_total = row.insertCell();
+        // T_score = row.insertCell();
+        // var choice = document.createElement("button");
+        // choice.innerText = "Add to Cart";
+        // choice.id = idCounter
+        // choice.addEventListener('click', press)
+  
+        T_name.innerText = sCart[i].name;
+        T_price.innerText = sCart[i].price;
+        T_amount.innerText = sCart[i].amount;
+        T_total.innerText = sCart[i].total;
+
+        // T_choice.append(choice);
+  
+  
+        // CartRecord = c.next();
+        //   idCounter += 1
+  
+      }
+    
+
+  }
