@@ -12,7 +12,7 @@ function* Datos() {
 }
 
 
-var sCart = [];
+var sCart = []; 
 
 let d = Datos();
 var record = d.next();
