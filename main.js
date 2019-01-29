@@ -32,6 +32,8 @@ let d = Datos();
 var record = d.next();
 
 var idCounter = 1
+var p_quantity = 0
+
 
 function ProductsInfo() {
   for (i of products) {
@@ -67,19 +69,72 @@ function ProductsInfo() {
 }
 
 function press(evt){
+
+ 
+
     var CurID = evt.target.id
 
+    RowContent(CurID)
+
+    exampleModalLabel.innerText = RowContent(CurID)[0]
+    Price.innerText = RowContent(CurID)[1]
+
     $('#ShoppingCart').modal('toggle')
+
+
     console.log(CurID)
 }
 
 
+function RowContent(i){
+
+var info = []
+
+var CurrentRow = document.getElementsByTagName('tr')[i]
+
+var P_name = CurrentRow.getElementsByTagName('td')[0].innerHTML
+var P_price = CurrentRow.getElementsByTagName('td')[1].innerHTML
+
+info.push(P_name,P_price)
+
+return info
+}
+
 
 function test(){
 
-   var t = document.getElementsByTagName('tr')[2].innerHTML
+   var t = document.getElementsByTagName('tr')[2]
    
 
-    console.log(document.getElementById('1').id)
+    var a = 1 + parseInt(t.getElementsByTagName('td')[1].innerHTML)
 
+    console.log(a)
+
+}
+
+function add(p_quantity){
+
+    var quantity = parseInt(Amount.placeholder)
+
+    quantity = quantity + 1
+    
+    Amount.placeholder = quantity
+
+    P_total.innerText = "Total amount for this Product:   $"+(parseInt(Amount.placeholder) * parseInt(Price.innerText))
+      
+}
+function remove(p_quantity){ 
+
+    var quantity = parseInt(Amount.placeholder)
+
+    quantity = quantity - 1
+
+    if (quantity < 0){
+        quantity = 0
+    }
+
+    Amount.placeholder = quantity
+
+    P_total.innerText = "Total amount for this Product:   $"+(parseInt(Amount.placeholder) * parseInt(Price.innerText))
+      
 }

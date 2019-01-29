@@ -87,7 +87,7 @@ ul.breadcrumb {
    transform: skewX(15deg);
    text-decoration:none;
    color: #444;
-  font-weight: 300;
+  font-weight: 300; 
   }
   .cont_breadcrumbs_1 > ul > li:first-child {
    margin-left: 0px;

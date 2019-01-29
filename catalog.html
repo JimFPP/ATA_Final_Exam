@@ -36,21 +36,37 @@
 
     <!-- Shopping cart -->
     <div class="modal fade" id="ShoppingCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+                <!-- <span aria-hidden="true">&times;</span> -->
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="text-align:left">
                 
+                <form class='form-inline' style="text-align:left">
+                    <label id="P_lable" for="Price" >Current Price:  $</label>
+                    <label id="Price" for="Price" > </label>
+                    
+                    <div class="input-group">
+                            <input type="text" id="Amount" readonly  placeholder="0"  style="width: 50px;margin-left: 60px">
+                            <div class="input-group-append" id="button-addon4">
+                              <button id='Add' onclick="add()" class="btn btn-outline-secondary" type="button" style="width: 10px;text-align: center; color: black">+</button>
+                              <button id='Remove' onclick="remove()" class="btn btn-outline-secondary" type="button" style="width: 10px;">-</button>
+                            </div>
+                          </div>
+                </form>
+
+                <br>
+                <br> 
+                <label id="P_total" for="Total"  > </label>
 
 
             </div>
             <div class="modal-footer">
-                    <input type="submit"  value="Add New Student" onclick="addStudent()" class="btn btn-outline-info" style="margin-left: 60px;" data-dismiss="modal">
+                    <input type="submit"  value="Add To Cart" onclick="addStudent()" class="btn btn-outline-info" style="margin-left: 60px;" data-dismiss="modal">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 
             </div>
@@ -88,6 +104,7 @@
       <tbody id="body"></tbody>
     </table>
 
+<button onclick="test()">test</button>
 
   </body>
 </html>
